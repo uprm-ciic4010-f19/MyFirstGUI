@@ -13,36 +13,47 @@ import javax.swing.JComponent;
 import Game.Entities.Dynamic.Car;
 
 public class MyComponent extends JComponent{
-	
+
 	private static int counter = 0;
-	
-//	public Car f1Car = new Car(10, 10,Color.BLUE);
-	public Car f2Car = new Car(0,0,Color.MAGENTA, 20);
+
+	//	public Car f1Car = new Car(10, 10,Color.BLUE);
+	public Car f2Car = new Car(0,0,Color.MAGENTA, 50);
 	public Car f3Car = new Car(0,30,Color.BLUE, 5);
-	
+
 	public void paintComponent(Graphics g) {
-//		
-//		f1Car.draw(g);
-//		
-//		f2Car.setPos(this.getWidth()-80, this.getHeight()-40);
-//		f2Car.draw(g);
-		
-//		Random genRan = new Random();
-//		f3Car.setColor(Color.MAGENTA);
-		f2Car.setPos(f2Car.getxPos()+f2Car.getSpeed(), f2Car.getyPos());
+		//		
+		//		f1Car.draw(g);
+		//		
+		//		f2Car.setPos(this.getWidth()-80, this.getHeight()-40);
+		//		f2Car.draw(g);
+
+		//		Random genRan = new Random();
+		//		f3Car.setColor(Color.MAGENTA);
+
+		f2Car.move(f2Car.getSpeed()*f2Car.getDirection(), 0);
+		if (f2Car.getDirection()>0) {
+			if (f2Car.getxPos()+f2Car.getWidth() >= this.getWidth()) {
+				f2Car.setDirection(f2Car.getDirection()*-1); // Toggle direction
+			}
+		}
+		else if (f2Car.getDirection() < 0 ) {
+			if (f2Car.getxPos()<=0) {
+				f2Car.setDirection(f2Car.getDirection()*-1); // Toggle direction
+			}
+		}
 		f2Car.draw(g);
 
-		f3Car.setPos(f3Car.getxPos()+f3Car.getSpeed(), f3Car.getyPos());
-		f3Car.draw(g);
+		//		f3Car.move(f3Car.getSpeed(), 0);
+		//		f3Car.draw(g);
 
-//		drawCar(g, 10, 10);
-//		drawCar(g, 200, 200);
-//		drawCar(g, this.getWidth()-80, this.getHeight()-40);
-		
+		//		drawCar(g, 10, 10);
+		//		drawCar(g, 200, 200);
+		//		drawCar(g, this.getWidth()-80, this.getHeight()-40);
+
 		counter++;
 		System.out.println("paintComponent called " + counter + " times.");
-		
+
 	}
-	
-	
+
+
 }

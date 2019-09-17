@@ -8,7 +8,7 @@ public class Main {
 		
 		JFrame mainFrame = new JFrame("My First Swing GUI");
 		
-		mainFrame.setSize(600, 400);
+		mainFrame.setSize(1000, 800);
 		
 		MyComponent myComponent = new MyComponent();
 		mainFrame.add(myComponent);

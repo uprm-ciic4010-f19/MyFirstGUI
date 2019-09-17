@@ -16,6 +16,7 @@ public class Car {
 	private int yPos;
 	private Color color;
 	private int speed;  // Car speed in pixels per second
+	private int direction=1; // 1=left to right, -1=right-to-left
 
 
 	public Car(int xPos, int yPos, Color color, int speed) {
@@ -57,6 +58,14 @@ public class Car {
 	public Color getColor() {
 		return color;
 	}
+	
+	public int getWidth() {
+		return 60;
+	}
+
+	public int getDirection() {
+		return direction;
+	}
 
 	public void setxPos(int xPos) {
 		this.xPos = xPos;
@@ -72,6 +81,15 @@ public class Car {
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+	
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+	
+	public void move(int deltax, int deltay) {
+		this.xPos = this.getxPos() + deltax;
+		this.yPos = this.getyPos() + deltay;
 	}
 
 	public void draw(Graphics g) {
