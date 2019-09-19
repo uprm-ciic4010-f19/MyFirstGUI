@@ -31,15 +31,10 @@ public class MyComponent extends JComponent{
 		//		f3Car.setColor(Color.MAGENTA);
 
 		f2Car.move(f2Car.getSpeed()*f2Car.getDirection(), 0);
-		if (f2Car.getDirection()>0) {
-			if (f2Car.getxPos()+f2Car.getWidth() >= this.getWidth()) {
-				f2Car.setDirection(f2Car.getDirection()*-1); // Toggle direction
-			}
-		}
-		else if (f2Car.getDirection() < 0 ) {
-			if (f2Car.getxPos()<=0) {
-				f2Car.setDirection(f2Car.getDirection()*-1); // Toggle direction
-			}
+		if (((f2Car.getDirection()>0) && (f2Car.getxPos()+f2Car.getWidth() >= this.getWidth())) ||
+				((f2Car.getDirection()<0) && (f2Car.getxPos()<=0)))
+		{
+			f2Car.setDirection(f2Car.getDirection()*-1); // Toggle direction
 		}
 		f2Car.draw(g);
 
