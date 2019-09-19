@@ -17,8 +17,8 @@ public class MyComponent extends JComponent{
 	private static int counter = 0;
 
 	//	public Car f1Car = new Car(10, 10,Color.BLUE);
-	public Car f2Car = new Car(0,0,Color.MAGENTA, 50);
-	public Car f3Car = new Car(0,30,Color.BLUE, 5);
+	public Car f2Car = new Car(0,0,Color.GREEN, 5);
+	//public Car f3Car = new Car(0,30,Color.BLUE, 5);
 
 	public void paintComponent(Graphics g) {
 		//		
