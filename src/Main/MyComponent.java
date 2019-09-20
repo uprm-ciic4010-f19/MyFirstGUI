@@ -16,9 +16,13 @@ public class MyComponent extends JComponent{
 
 	private static int counter = 0;
 
-	//	public Car f1Car = new Car(10, 10,Color.BLUE);
-	public Car f2Car = new Car(0,0,Color.GREEN, 5);
+	public Car f1Car = new Car(0,0,Color.BLUE, 5);
+	public Car f2Car = new Car(0,50,Color.GREEN, 5);
 	//public Car f3Car = new Car(0,30,Color.BLUE, 5);
+	
+	public static final int NUM_CARS = 10;
+	
+	public Car[] theCars = new Car[NUM_CARS];
 
 	public void paintComponent(Graphics g) {
 		//		
@@ -30,6 +34,15 @@ public class MyComponent extends JComponent{
 		//		Random genRan = new Random();
 		//		f3Car.setColor(Color.MAGENTA);
 
+		f1Car.move(f1Car.getSpeed()*f1Car.getDirection(), 0);
+		if (((f1Car.getDirection()>0) && (f1Car.getxPos()+f1Car.getWidth() >= this.getWidth())) ||
+				((f1Car.getDirection()<0) && (f1Car.getxPos()<=0)))
+		{
+			f1Car.setDirection(f1Car.getDirection()*-1); // Toggle direction
+		}
+		f1Car.draw(g);
+
+		
 		f2Car.move(f2Car.getSpeed()*f2Car.getDirection(), 0);
 		if (((f2Car.getDirection()>0) && (f2Car.getxPos()+f2Car.getWidth() >= this.getWidth())) ||
 				((f2Car.getDirection()<0) && (f2Car.getxPos()<=0)))
