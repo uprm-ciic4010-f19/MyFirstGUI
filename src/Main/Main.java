@@ -8,7 +8,7 @@ public class Main {
 		
 		JFrame mainFrame = new JFrame("My First Swing GUI");
 		
-		mainFrame.setSize(1000, 800);
+		mainFrame.setSize(800, 600);
 		
 		MyComponent myComponent = new MyComponent();
 		mainFrame.add(myComponent);
@@ -17,7 +17,7 @@ public class Main {
 		mainFrame.setVisible(true);
 
 		
-		while(true) {
+		while(!myComponent.someCarReachedLeftEdge()) {
 			
 			mainFrame.repaint();
 			
