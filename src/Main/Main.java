@@ -8,7 +8,7 @@ public class Main {
 		
 		JFrame mainFrame = new JFrame("My First Swing GUI");
 		
-		mainFrame.setSize(800, 600);
+		mainFrame.setSize(700, 700);
 		
 		MyComponent myComponent = new MyComponent();
 		mainFrame.add(myComponent);
@@ -18,11 +18,8 @@ public class Main {
 
 		
 		while(!myComponent.someCarReachedLeftEdge()) {
-			
 			mainFrame.repaint();
-			
 			Thread.sleep(1000/30);
-			
 		}
 	}
 
