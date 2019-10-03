@@ -62,6 +62,11 @@ public class Car {
 	public int getWidth() {
 		return 60;
 	}
+	
+	public int getHeight() {
+		return 40;
+	}
+
 
 	public int getDirection() {
 		return direction;
