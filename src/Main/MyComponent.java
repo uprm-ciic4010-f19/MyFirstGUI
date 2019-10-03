@@ -9,43 +9,40 @@ import javax.swing.JComponent;
 import Game.Entities.Dynamic.Car;
 
 public class MyComponent extends JComponent{
-	
+
 	Random myRandGen = new Random();
+
 	private static int counter = 0; // repaints counter
 	
+
 	public static final int NUM_CARS = 10;
+	public static final int MAX_SPEED = 10;
 	public Car[] theCars = new Car[NUM_CARS];
+
 	public static Color[] colors = {Color.BLUE, Color.DARK_GRAY, Color.CYAN, Color.GREEN,
-			Color.ORANGE, Color.MAGENTA};
-	
-	
+			Color.ORANGE, Color.MAGENTA, Color.BLACK, Color.PINK};
+
+
 	public MyComponent() {
 		int lane = 0;
-		for (int i=0; i< theCars.length; i++) {
-			theCars[i]= new Car(0,lane,colors[myRandGen.nextInt(6)], 8);
+		for (int i=0; i < theCars.length; i++) {
+			theCars[i]= new Car(0,lane,colors[myRandGen.nextInt(colors.length)],
+					(myRandGen.nextInt(MAX_SPEED)+5));
 			//theCars[i]= new Car(0,lane,colors[i%6], 13);
-			lane+=50;
+			lane += theCars[i].getHeight() + 10;
 		}
 		//theCars[1] = new Car(0,50,Color.GREEN, 8);
 	}
-	
+
 	private boolean reachedRightEdge(Car c) {
 		return (c.getDirection()>0 &&
 				c.getxPos()+c.getWidth() >= this.getWidth());
 	}
-	
+
 	private boolean reachedLeftEdge(Car c) {
 		return (c.getDirection()<0 && c.getxPos()<=0);
 	}
-	
-	public boolean someCarReachedLeftEdge() {
-		for (Car c : theCars) {
-			if (reachedLeftEdge(c))
-				return true;
-		}
-		return false;
-	}
-	
+
 	// Re-paints car in new x-position every "tick"
 	public void paintComponent(Graphics g) {
 
@@ -59,16 +56,42 @@ public class MyComponent extends JComponent{
 			{
 				theCars[i].setDirection(theCars[i].getDirection()*-1); // Toggle direction
 			}
-			
+
 			theCars[i].draw(g);
 		}
-		
+
 		counter++;
 		System.out.println("paintComponent called " + counter + " times.");
 
 	}
-	
 
 
+	public boolean winner() {
+		for (Car c : theCars) {
+			if (reachedLeftEdge(c))
+				return true;
+		}
+		return false;
+	}
 
+
+	public boolean doesCarColorExist(Color clr) {
+		for (Car c : theCars) {
+			if(c.getColor() == clr) {
+				System.out.println("True");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void maxSpeed() {
+		int max = theCars[0].getSpeed();
+		for (int i = 1; i < theCars.length; i++) {
+			if(theCars[i].getSpeed() > max) {
+				max = theCars[i].getSpeed();
+				System.out.println("Max speed is car: " + i);
+			}
+		}
+	}
 }

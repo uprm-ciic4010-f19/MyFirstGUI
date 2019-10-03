@@ -1,5 +1,7 @@
 package Main;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 public class Main {
@@ -17,10 +19,19 @@ public class Main {
 		mainFrame.setVisible(true);
 
 		
-		while(!myComponent.someCarReachedLeftEdge()) {
+
+
+		while(!myComponent.winner()) {
+			
+
 			mainFrame.repaint();
 			Thread.sleep(1000/30);
 		}
+		
+		myComponent.doesCarColorExist(Color.BLACK);
+		myComponent.maxSpeed();
+		//myComponent.avgSpeed(); // Students try to complete this method.
+		
 	}
 
 }
