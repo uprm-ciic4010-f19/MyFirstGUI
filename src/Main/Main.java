@@ -30,6 +30,7 @@ public class Main {
 		
 		myComponent.doesCarColorExist(Color.BLACK);
 		myComponent.maxSpeed();
+		myComponent.getMaxSpeed();
 		//myComponent.avgSpeed(); // Students try to complete this method.
 		
 	}

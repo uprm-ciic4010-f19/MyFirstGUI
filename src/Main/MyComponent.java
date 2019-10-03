@@ -85,13 +85,36 @@ public class MyComponent extends JComponent{
 		return false;
 	}
 
+	// Version at end of Oct-01 lecture 
+//	public void maxSpeed() {
+//		int max = theCars[0].getSpeed();
+//		for (int i = 1; i < theCars.length; i++) {
+//			if(theCars[i].getSpeed() > max) {
+//				max = theCars[i].getSpeed();
+//				System.out.println("Max speed is car: " + i);
+//			}
+//		}
+//	}
+	
+	// Alternate Improved Version 
 	public void maxSpeed() {
 		int max = theCars[0].getSpeed();
 		for (int i = 1; i < theCars.length; i++) {
 			if(theCars[i].getSpeed() > max) {
 				max = theCars[i].getSpeed();
-				System.out.println("Max speed is car: " + i);
 			}
 		}
+		System.out.println("The fastest car has speed of : " + max);
+	}	
+	
+	// Alternate Version with return
+	public int getMaxSpeed() {
+		int max = theCars[0].getSpeed();
+		for (int i = 1; i < theCars.length; i++) {
+			if(theCars[i].getSpeed() > max) {
+				max = theCars[i].getSpeed();
+			}
+		}
+		return max;
 	}
 }
