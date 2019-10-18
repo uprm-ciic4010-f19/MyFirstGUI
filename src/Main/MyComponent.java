@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.JComponent;
 
 import Game.Entities.Dynamic.Car;
+import Game.Entities.Dynamic.PoliceCar;
 
 public class MyComponent extends JComponent{
 
@@ -26,8 +27,14 @@ public class MyComponent extends JComponent{
 	public MyComponent() {
 		int lane = 0;
 		for (int i=0; i < theCars.length; i++) {
-			theCars[i]= new Car(0,lane,colors[myRandGen.nextInt(colors.length)],
+			if (i % 2 == 0) {
+				theCars[i]= new Car(0,lane,colors[myRandGen.nextInt(colors.length)],
 					(myRandGen.nextInt(MAX_SPEED)+5));
+			}
+			else {
+				theCars[i]= new PoliceCar(0,lane,colors[myRandGen.nextInt(colors.length)],
+						(myRandGen.nextInt(MAX_SPEED)+5));
+			}
 			//theCars[i]= new Car(0,lane,colors[i%6], 13);
 			lane += theCars[i].getHeight() + 10;
 		}
