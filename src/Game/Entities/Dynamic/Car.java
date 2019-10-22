@@ -8,17 +8,22 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
 public class Car extends Vehicle {
+	
+	private String name;
 
 	public Car(int xPos, int yPos, Color color, int speed) {
 		super(xPos, yPos, color, speed);
+		name = "Player1";
 	}
 
 	public Car(int xPos, int yPos, Color color) {
 		super(xPos, yPos, color);
+		name = "Player1";
 	}
 
 	public Car(int xPos, int yPos) {
 		super(xPos, yPos);
+		name = "Player1";
 	}
 
 	@Override
@@ -31,6 +36,14 @@ public class Car extends Vehicle {
 	public int getHeight() {
 		// TODO Auto-generated method stub
 		return 30;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -66,6 +79,11 @@ public class Car extends Vehicle {
 			g2D.fill(leftLight);
 			g2D.setColor(Color.RED);
 			g2D.fill(rightLight);		}
+	}
+
+	@Override
+	public String greet() {
+		return "Hello, I'm " + this.getName();
 	}
 
 }

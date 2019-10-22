@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 
 import Game.Entities.Dynamic.Car;
 import Game.Entities.Dynamic.PoliceCar;
+import Game.Entities.Dynamic.Truck;
 import Game.Entities.Dynamic.Vehicle;
 
 public class MyRace extends JComponent{
@@ -17,7 +18,7 @@ public class MyRace extends JComponent{
 	private static int counter = 0; // repaints counter
 	
 
-	public static final int NUM_CARS = 10;
+	public static final int NUM_CARS = 12;
 	public static final int MAX_SPEED = 10;
 	public Vehicle[] theCars = new Vehicle[NUM_CARS];
 
@@ -28,8 +29,11 @@ public class MyRace extends JComponent{
 	public MyRace() {
 		int lane = 0;
 		for (int i=0; i < theCars.length; i++) {
-			if (i % 2 == 0) {
+			if (i % 3 == 0) {
 				theCars[i]= new Car(0,lane,colors[myRandGen.nextInt(colors.length)],
+					(myRandGen.nextInt(MAX_SPEED)+5));
+			} else if (i % 3 == 1) {
+				theCars[i]= new Truck(0,lane,colors[myRandGen.nextInt(colors.length)],
 					(myRandGen.nextInt(MAX_SPEED)+5));
 			}
 			else {
@@ -76,8 +80,10 @@ public class MyRace extends JComponent{
 
 	public boolean winner() {
 		for (Vehicle c : theCars) {
-			if (reachedLeftEdge(c))
+			if (reachedLeftEdge(c)) {
+				System.out.println(c.greet());
 				return true;
+			}
 		}
 		return false;
 	}

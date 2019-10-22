@@ -76,6 +76,12 @@ public abstract class Vehicle {
 	public void draw(Graphics g) {
 		this.draw(g, this.getColor());
 	}
+	
+	public boolean canStop() {
+		return false;
+	}
+	
+	public abstract String greet();
 
 	public abstract void draw(Graphics g, Color color);
 
