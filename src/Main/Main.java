@@ -12,7 +12,7 @@ public class Main {
 		
 		mainFrame.setSize(700, 700);
 		
-		MyComponent myComponent = new MyComponent();
+		MyRace myComponent = new MyRace();
 		mainFrame.add(myComponent);
 		
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -8,8 +8,9 @@ import javax.swing.JComponent;
 
 import Game.Entities.Dynamic.Car;
 import Game.Entities.Dynamic.PoliceCar;
+import Game.Entities.Dynamic.Vehicle;
 
-public class MyComponent extends JComponent{
+public class MyRace extends JComponent{
 
 	Random myRandGen = new Random();
 
@@ -18,13 +19,13 @@ public class MyComponent extends JComponent{
 
 	public static final int NUM_CARS = 10;
 	public static final int MAX_SPEED = 10;
-	public Car[] theCars = new Car[NUM_CARS];
+	public Vehicle[] theCars = new Vehicle[NUM_CARS];
 
 	public static Color[] colors = {Color.BLUE, Color.DARK_GRAY, Color.CYAN, Color.GREEN,
 			Color.ORANGE, Color.MAGENTA, Color.BLACK, Color.PINK};
 
 
-	public MyComponent() {
+	public MyRace() {
 		int lane = 0;
 		for (int i=0; i < theCars.length; i++) {
 			if (i % 2 == 0) {
@@ -41,12 +42,12 @@ public class MyComponent extends JComponent{
 		//theCars[1] = new Car(0,50,Color.GREEN, 8);
 	}
 
-	private boolean reachedRightEdge(Car c) {
+	private boolean reachedRightEdge(Vehicle c) {
 		return (c.getDirection()>0 &&
 				c.getxPos()+c.getWidth() >= this.getWidth());
 	}
 
-	private boolean reachedLeftEdge(Car c) {
+	private boolean reachedLeftEdge(Vehicle c) {
 		return (c.getDirection()<0 && c.getxPos()<=0);
 	}
 
@@ -74,7 +75,7 @@ public class MyComponent extends JComponent{
 
 
 	public boolean winner() {
-		for (Car c : theCars) {
+		for (Vehicle c : theCars) {
 			if (reachedLeftEdge(c))
 				return true;
 		}
@@ -83,7 +84,7 @@ public class MyComponent extends JComponent{
 
 
 	public boolean doesCarColorExist(Color clr) {
-		for (Car c : theCars) {
+		for (Vehicle c : theCars) {
 			if(c.getColor() == clr) {
 				System.out.println("True");
 				return true;
